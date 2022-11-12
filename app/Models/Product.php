@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cknow\Money\Money;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,4 +23,9 @@ class Product extends Model
         'live_at' => 'datetime:Y-m-d H:i:s',
         'published_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+    public function formattedPrice(): Money
+    {
+        return Money::BRL($this->price);
+    }
 }
