@@ -28,4 +28,9 @@ class Product extends Model
     {
         return Money::BRL($this->price);
     }
+
+    public function variations()
+    {
+        return $this->hasMany(Variation::class);
+    }
 }
