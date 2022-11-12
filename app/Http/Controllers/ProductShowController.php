@@ -7,10 +7,11 @@ use Cknow\Money\Money;
 
 class ProductShowController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Product $product)
     {
+        $product->load('variations.children');
         return view('products.show', [
-            'product' => Product::first(),
+            'product' => $product,
             'currencyFormatter' => new Money(),
         ]);
     }
